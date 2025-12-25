@@ -6,24 +6,6 @@ import { Footer } from '@/components/ui/Footer';
 export const metadata: Metadata = {
     title: 'TECCOD',
     description: 'MVP for selecting additional airline services',
-    icons: {
-        icon: [
-            {
-                rel: 'icon',
-                type: 'image/png',
-                sizes: '32x32',
-                url: '/icons/favicon-32x32.png',
-            },
-            {
-                rel: 'icon',
-                type: 'image/png',
-                sizes: '16x16',
-                url: '/icons/favicon-16x16.png',
-            },
-        ],
-        apple: '/icons/apple-touch-icon.png',
-        other: [{ rel: 'manifest', url: '/icons/site.webmanifest' }],
-    },
 };
 
 export default function RootLayout({
