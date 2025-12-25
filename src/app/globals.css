@@ -1,26 +1,113 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+@import '../css/icons.css';
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --air-100: #5d84a2;
+    --air-200: #91b4cf;
+    --air-300: #cee6fd;
+    --air-400: #f8fcff;
+    --onyx-100: #202727;
+    --onyx-200: #656969;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+    --color-air-100: var(--air-100);
+    --color-air-200: var(--air-200);
+    --color-air-300: var(--air-300);
+    --color-air-400: var(--air-400);
+    --color-primary: var(--onyx-100);
+    --color-secondary: var(--onyx-200);
+
+    --animate-shake: shake 0.5s ease-in-out both;
+    @keyframes shake {
+        0%,
+        100% {
+            transform: translateX(0);
+        }
+        25% {
+            transform: translateX(-2px);
+        }
+        50% {
+            transform: translateX(2px);
+        }
+        75% {
+            transform: translateX(-1px);
+        }
+    }
+
+    --animate-fly: fly 2s ease-in-out linear forwards;
+    @keyframes fly {
+        0% {
+            transform: translateY(0px) rotate(0deg);
+        }
+        25% {
+            transform: translateY(-4px) rotate(-5deg);
+        }
+        50% {
+            transform: translateY(-8px) rotate(5deg);
+        }
+        75% {
+            transform: translateY(-4px) rotate(-3deg);
+        }
+        100% {
+            transform: translateY(0px) rotate(0deg);
+        }
+    }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    @apply bg-gray-100 text-primary;
+    background-image: url('/assets/airplanes-background.png');
+    background-repeat: repeat;
+    background-size: auto;
+    background-attachment: fixed;
+}
+
+@layer components {
+    .btn {
+        @apply inline-flex items-center justify-center
+            rounded-md
+            font-medium
+            cursor-pointer
+            transition
+            
+            px-3 py-2
+            text-sm
+
+            md:px-4 md:py-2.5
+            md:text-base
+
+            lg:px-6 lg:py-3
+            lg:text-base;
+
+        @apply not-disabled:hover:scale-105;
+        @apply not-disabled:active:scale-95;
+        @apply disabled:cursor-not-allowed;
+    }
+
+    .btn-primary {
+        @apply bg-air-300
+            text-primary;
+
+        @apply not-disabled:hover:bg-air-200;
+        @apply not-disabled:active:bg-air-100;
+        @apply disabled:bg-air-400 disabled:text-air-200;
+    }
+
+    .btn-secondary {
+        @apply bg-primary
+            text-white;
+
+        @apply disabled:bg-secondary disabled:text-air-400;
+    }
+
+    .card {
+        @apply rounded-xl shadow-sm hover:shadow-md;
+    }
 }
