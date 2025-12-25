@@ -59,7 +59,7 @@ npm run dev
 
 ## Deployment
 
-The project was deployed on **Vercel**:
+The project was deployed on **Vercel**.
 
 ---
 
